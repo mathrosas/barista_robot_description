@@ -1,0 +1,510 @@
+<?xml version="1.0"?>
+<robot name="barista_robot">
+
+  <!-- Materials -->
+  <material name="white">
+    <color rgba="1 1 1 1"/>
+  </material>
+
+  <material name="black">
+    <color rgba="0 0 0 1"/>
+  </material>
+  
+  <material name="dark">
+    <color rgba="0.3 0.3 0.3 1"/>
+  </material>
+  
+  <material name="grey">
+    <color rgba="0.5 0.5 0.5 1"/>
+  </material>
+  
+  <material name="red">
+    <color rgba="0.8 0.0 0.0 1"/>
+  </material>
+  
+  <material name="blue">
+    <color rgba="0.0 0.0 0.8 1"/>
+  </material>
+
+  <!-- Base link -->
+  <link name="base_link"/>
+  
+  <!-- Bottom link -->
+  <link name="bottom_link">
+    <visual>
+      <geometry>
+        <cylinder radius="0.178" length="0.155"/>
+      </geometry>
+      <material name="blue"/>
+    </visual>
+
+    <collision>
+      <geometry>
+        <cylinder radius="0.178" length="0.155"/>
+      </geometry>
+    </collision>
+
+    <inertial>
+      <mass value="0.100"/>
+      <inertia ixx="9.9e-04" ixy="0.0e+00" ixz="0.0e+00" iyy="9.9e-04" iyz="0.0e+00" izz="1.6e-03"/>
+    </inertial>
+  </link>
+
+  <gazebo reference="bottom_link">
+    <material>Gazebo/Blue</material>
+  </gazebo>
+
+  <link name="top_link">
+    <visual>
+      <geometry>
+        <cylinder radius="0.160" length="0.090"/>
+      </geometry>
+      <material name="blue"/>
+    </visual>
+
+    <collision>
+      <geometry>
+        <cylinder radius="0.160" length="0.090"/>
+      </geometry>
+    </collision>
+
+    <inertial>
+      <mass value="0.050"/>
+      <inertia ixx="3.5e-04" ixy="0.0e+00" ixz="0.0e+00" iyy="3.5e-04" iyz="0.0e+00" izz="6.4e-04"/>
+    </inertial>
+  </link>
+
+  <gazebo reference="top_link">
+    <material>Gazebo/Blue</material>
+  </gazebo>
+  
+  <!-- Spacers (20mm) link -->
+  <link name="spacer_1_link">
+    <visual>
+      <geometry>
+        <cylinder radius="0.010" length="0.220"/>
+      </geometry>
+      <material name="white"/>
+    </visual>
+
+    <collision>
+      <geometry>
+        <cylinder radius="0.010" length="0.220"/>
+      </geometry>
+    </collision>
+
+    <inertial>
+      <mass value="0.020"/>
+      <inertia ixx="8.1e-05" ixy="0.0e+00" ixz="0.0e+00" iyy="8.1e-05" iyz="0.0e+00" izz="1.0e-06"/>
+    </inertial>
+  </link>
+
+  <gazebo reference="spacer_1_link">
+    <material>Gazebo/White</material>
+  </gazebo>
+  
+  <link name="spacer_2_link">
+    <visual>
+      <geometry>
+        <cylinder radius="0.010" length="0.220"/>
+      </geometry>
+      <material name="white"/>
+    </visual>
+
+    <collision>
+      <geometry>
+        <cylinder radius="0.010" length="0.220"/>
+      </geometry>
+    </collision>
+
+    <inertial>
+      <mass value="0.020"/>
+      <inertia ixx="8.1e-05" ixy="0.0e+00" ixz="0.0e+00" iyy="8.1e-05" iyz="0.0e+00" izz="1.0e-06"/>
+    </inertial>
+  </link>
+
+  <gazebo reference="spacer_2_link">
+    <material>Gazebo/White</material>
+  </gazebo>
+  
+  <link name="spacer_3_link">
+    <visual>
+      <geometry>
+        <cylinder radius="0.010" length="0.220"/>
+      </geometry>
+      <material name="white"/>
+    </visual>
+
+    <collision>
+      <geometry>
+        <cylinder radius="0.010" length="0.220"/>
+      </geometry>
+    </collision>
+
+    <inertial>
+      <mass value="0.020"/>
+      <inertia ixx="8.1e-05" ixy="0.0e+00" ixz="0.0e+00" iyy="8.1e-05" iyz="0.0e+00" izz="1.0e-06"/>
+    </inertial>
+  </link>
+
+  <gazebo reference="spacer_3_link">
+    <material>Gazebo/White</material>
+  </gazebo>
+  
+  <link name="spacer_4_link">
+    <visual>
+      <geometry>
+        <cylinder radius="0.010" length="0.220"/>
+      </geometry>
+      <material name="white"/>
+    </visual>
+
+    <collision>
+      <geometry>
+        <cylinder radius="0.010" length="0.220"/>
+      </geometry>
+    </collision>
+
+    <inertial>
+      <mass value="0.020"/>
+      <inertia ixx="8.1e-05" ixy="0.0e+00" ixz="0.0e+00" iyy="8.1e-05" iyz="0.0e+00" izz="1.0e-06"/>
+    </inertial>
+  </link>
+
+  <gazebo reference="spacer_4_link">
+    <material>Gazebo/White</material>
+  </gazebo>
+  
+  <!-- Drive wheels link -->
+  <link name="right_wheel_link">
+    <visual>
+      <geometry>
+        <cylinder radius="0.033" length="0.0178"/>
+      </geometry>
+      <material name="black"/>
+    </visual>
+
+    <collision>
+      <geometry>
+        <cylinder radius="0.033" length="0.0178"/>
+      </geometry>
+    </collision>
+
+    <inertial>
+      <mass value="0.025"/>
+      <inertia ixx="7.5e-06" ixy="0.0e+00" ixz="0.0e+00" iyy="7.5e-06" iyz="0.0e+00" izz="1.4e-05"/>
+    </inertial>
+  </link>
+
+  <gazebo reference="right_wheel_link">
+    <kp>1000000000000000000000000000.0</kp>
+    <kd>1000000000000000000000000000.0</kd>
+    <mu1>10.0</mu1>
+    <mu2>10.0</mu2>
+    <material>Gazebo/Black</material>
+  </gazebo>
+
+  <link name="left_wheel_link">
+    <visual>
+      <geometry>
+        <cylinder radius="0.033" length="0.0178"/>
+      </geometry>
+      <material name="black"/>
+    </visual>
+
+    <collision>
+      <geometry>
+        <cylinder radius="0.033" length="0.0178"/>
+      </geometry>
+    </collision>
+
+    <inertial>
+      <mass value="0.025"/>
+      <inertia ixx="7.5e-06" ixy="0.0e+00" ixz="0.0e+00" iyy="7.5e-06" iyz="0.0e+00" izz="1.4e-05"/>
+    </inertial>
+  </link>
+
+  <gazebo reference="left_wheel_link">
+    <kp>1000000000000000000000000000.0</kp>
+    <kd>1000000000000000000000000000.0</kd>
+    <mu1>10.0</mu1>
+    <mu2>10.0</mu2>
+    <material>Gazebo/Black</material>
+  </gazebo>
+
+  <!-- Caster wheel support link -->
+  <!-- <link name="caster_wheel_support_link">
+    <visual>
+      <geometry>
+        <box size="0.033 0.033 0.0165"/>
+      </geometry>
+      <material name="dark"/>
+    </visual>
+
+    <collision>
+      <geometry>
+        <box size="0.030 0.018 0.008"/>
+      </geometry>
+    </collision>
+
+    <inertial>
+      <mass value="0.010"/>
+      <inertia ixx="3.2e-07" ixy="0.0e+00" ixz="0.0e+00" iyy="8.0e-07" iyz="0.0e+00" izz="1.0e-06"/>
+    </inertial>
+  </link>
+
+  <gazebo reference="caster_wheel_support_link">
+    <material>Gazebo/DarkGrey</material>
+  </gazebo> -->
+
+  <!-- Caster wheel link -->
+  <link name="caster_wheel_yaw_link">
+      <visual>
+        <origin rpy="0 1.5707 1.5707" xyz="0 0 0"/>
+        <geometry>          
+          <cylinder length="0.001" radius="0.0045000000000000005"/>
+        </geometry>
+        <material name="blue"/>
+      </visual>
+
+      <collision>
+        <origin rpy="0 1.5707 1.5707" xyz="0 0 0"/>
+        <geometry>
+          <cylinder length="0.001" radius="0.0045000000000000005"/>
+        </geometry>
+      </collision>
+
+      <inertial>
+          <origin rpy="0 1.5707 1.5707" xyz="0 0 0"/>
+          <mass value="0.001"/>
+          <inertia ixx="5.145833333333334e-09" ixy="0" ixz="0" iyy="5.145833333333334e-09" iyz="0" izz="1.0125000000000003e-08"/>
+      </inertial>
+  </link>
+
+  <gazebo reference="caster_wheel_yaw_link">
+    <material>Gazebo/Blue</material>
+  </gazebo>
+
+  <link name="caster_wheel_roll_link">
+      <visual>
+        <origin rpy="0 1.5707 1.5707" xyz="0 0 0"/>
+        <geometry>
+          <cylinder length="0.001" radius="0.0045000000000000005"/>
+        </geometry>
+        <material name="red"/>
+      </visual>
+
+      <collision>
+        <origin rpy="0 1.5707 1.5707" xyz="0 0 0"/>
+        <geometry>
+          <cylinder length="0.001" radius="0.0045000000000000005"/>
+        </geometry>
+      </collision>
+
+      <inertial>
+          <origin rpy="0 1.5707 1.5707" xyz="0 0 0"/>
+          <mass value="0.001"/>
+          <inertia ixx="5.145833333333334e-09" ixy="0" ixz="0" iyy="5.145833333333334e-09" iyz="0" izz="1.0125000000000003e-08"/>
+      </inertial>
+  </link>
+
+  <gazebo reference="caster_wheel_roll_link">
+    <material>Gazebo/Red</material>
+  </gazebo>
+
+  <link name="caster_wheel_pitch_link">
+    <visual>
+      <origin rpy="0 1.5707 1.5707" xyz="0 0 0"/>
+      <geometry>
+        <sphere radius="0.0165"/>
+      </geometry>
+      <material name="grey"/>
+    </visual>
+
+    <collision>
+      <origin rpy="0 1.5707 1.5707" xyz="0 0 0"/>
+      <geometry>
+        <sphere radius="0.005"/>
+      </geometry>
+    </collision>
+
+    <inertial>
+        <origin rpy="0 1.5707 1.5707" xyz="0 0 0"/>
+        <mass value="0.010"/>
+      <inertia ixx="1.0e-07" ixy="0.0e+00" ixz="0.0e+00" iyy="1.0e-07" iyz="0.0e+00" izz="1.0e-07" />
+    </inertial>
+  </link>
+
+  <gazebo reference="caster_wheel_pitch_link">
+    <kp>1e+27</kp>
+    <kd>1e+27</kd>
+    <mu1>0.5</mu1>
+    <mu2>0.5</mu2>
+    <material>Gazebo/Yellow</material>
+  </gazebo>
+
+  <!-- Lidar support link -->
+  <link name="lidar_support_link">
+    <visual>
+      <geometry>
+        <!-- <mesh filename="package://ros2_urdf_project/meshes/lds_base.dae" scale="0.001 0.001 0.001"/> -->
+        <box size="0.0947 0.0727 0.0257"/>
+      </geometry>
+      <material name="dark"/>
+    </visual>
+
+    <collision>
+      <geometry>
+        <!-- <mesh filename="package://ros2_urdf_project/meshes/lds_base.dae" scale="0.001 0.001 0.001"/> -->
+        <box size="0.0947 0.0727 0.0257"/>
+      </geometry>
+    </collision>
+
+    <inertial>
+      <mass value="0.100"/>
+      <inertia ixx="5.0e-05" ixy="0.0e+00" ixz="0.0e+00" iyy="8.0e-05" iyz="0.0e+00" izz="1.2e-04"/>
+    </inertial>
+  </link>
+
+  <gazebo reference="lidar_support_link">
+    <material>Gazebo/DarkGrey</material>
+  </gazebo>
+
+  <!-- Lidar spinner link -->
+  <link name="lidar_spinner_link">
+    <visual>
+      <geometry>
+        <!-- <mesh filename="package://ros2_urdf_project/meshes/lds_top.dae" scale="0.001 0.001 0.001"/> -->
+        <cylinder radius="0.0327" length="0.0188"/>
+      </geometry>
+      <material name="black"/>
+    </visual>
+
+    <collision>
+      <geometry>
+        <!-- <mesh filename="package://ros2_urdf_project/meshes/lds_top.dae" scale="0.001 0.001 0.001"/> -->
+        <cylinder radius="0.0327" length="0.0188"/>
+      </geometry>
+    </collision>
+
+    <inertial>
+      <mass value="0.050"/>
+      <inertia ixx="1.5e-05" ixy="0.0e+00" ixz="0.0e+00" iyy="1.5e-05" iyz="0.0e+00" izz="2.7e-05"/>
+    </inertial>
+  </link>
+
+  <gazebo reference="lidar_spinner_link">
+    <material>Gazebo/Black</material>
+  </gazebo>
+
+  <!-- JOINTS -->
+
+    <!-- Base joint-->
+  <joint name="bottom_joint" type="fixed">
+    <origin rpy="0 0 0" xyz="0 0 0.094"/>
+    <parent link="base_link"/>
+    <child link="bottom_link"/>
+  </joint>
+
+  <joint name="spacer_1_joint" type="fixed">
+    <origin rpy="0 0 0" xyz="-0.030 -0.128 0.1475"/>
+    <parent link="bottom_link"/>
+    <child link="spacer_1_link"/>
+  </joint>
+
+  <joint name="spacer_2_joint" type="fixed">
+    <origin rpy="0 0 0" xyz="-0.030 0.128 0.1475"/>
+    <parent link="bottom_link"/>
+    <child link="spacer_2_link"/>
+  </joint>
+
+  <joint name="spacer_3_joint" type="fixed">
+    <origin rpy="0 0 0" xyz="0.030 -0.128 0.1475"/>
+    <parent link="bottom_link"/>
+    <child link="spacer_3_link"/>
+  </joint>
+
+  <joint name="spacer_4_joint" type="fixed">
+    <origin rpy="0 0 0" xyz="0.030 0.128 0.1475"/>
+    <parent link="bottom_link"/>
+    <child link="spacer_4_link"/>
+  </joint>
+
+  <!-- Wheel joint -->
+  <joint name="left_wheel_joint" type="continuous">
+    <origin rpy="0 1.571 1.571" xyz="0 0.158 -0.061"/>
+    <parent link="bottom_link"/>
+    <child link="left_wheel_link"/>
+    <axis rpy="0 0 0" xyz="0 0 1"/>
+    <limit effort="10000" velocity="1000"/>
+    <joint_properties damping="1.0" friction="1.0"/>
+  </joint>
+  
+  <joint name="right_wheel_joint" type="continuous">
+    <origin rpy="0 1.571 1.571" xyz="0 -0.158 -0.061"/>
+    <parent link="bottom_link"/>
+    <child link="right_wheel_link"/>
+    <axis rpy="0 0 0" xyz="0 0 1"/>
+    <limit effort="10000" velocity="1000"/>
+    <joint_properties damping="1.0" friction="1.0"/>
+  </joint>
+
+  <!-- Caster wheel joint -->
+  <!-- <joint name="caster_wheel_support_joint" type="fixed">
+    <origin rpy="0 0 0" xyz="0.158 0 -0.08575"/>
+    <parent link="bottom_link"/>
+    <child link="caster_wheel_support_link"/>
+  </joint> -->
+
+  <joint name="caster_wheel_yaw_joint" type="continuous">
+    <origin rpy="0 0 0" xyz="0.158 0 -0.0775"/>
+    <!-- <parent link="caster_wheel_support_link"/> -->
+    <parent link="bottom_link"/>
+    <child link="caster_wheel_yaw_link"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="1000.0" velocity="100.0"/>
+    <dynamics damping="0.0" friction="0.1"/>
+  </joint>
+
+  <joint name="caster_wheel_roll_joint" type="continuous">
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <parent link="caster_wheel_yaw_link"/>
+    <child link="caster_wheel_roll_link"/>
+    <axis xyz="1 0 0"/>
+    <limit effort="1000.0" velocity="100.0"/>
+    <dynamics damping="0.0" friction="0.1"/>
+  </joint>
+
+  <joint name="caster_wheel_pitch_joint" type="continuous">
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <parent link="caster_wheel_roll_link"/>
+    <child link="caster_wheel_pitch_link"/>
+    <axis xyz="0 1 0"/>
+    <limit effort="1000.0" velocity="100.0"/>
+    <dynamics damping="0.0" friction="0.1"/>
+  </joint>
+
+  <!-- Top joint-->
+  <joint name="top_joint" type="fixed">
+    <origin rpy="0 0 0" xyz="0 0 0.375"/>
+    <parent link="base_link"/>
+    <child link="top_link"/>
+  </joint>
+
+  <!-- Lidar -->
+  <joint name="lidar_support_joint" type="fixed">
+    <origin rpy="0 0 3.142" xyz="0.100 0 0.09035"/>
+    <parent link="bottom_link"/>
+    <child link="lidar_support_link"/>
+  </joint>
+
+  <joint name="lidar_spinner_joint" type="continuous">
+    <origin rpy="0 0 0" xyz="0 0 0.02225"/>
+    <parent link="lidar_support_link"/>
+    <child link="lidar_spinner_link"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="10.0" velocity="2.0"/>
+    <dynamics friction="0.01"/>
+  </joint>
+
+</robot>
