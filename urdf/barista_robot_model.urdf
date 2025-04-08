@@ -26,6 +26,8 @@
     <color rgba="0.0 0.0 0.8 1"/>
   </material>
 
+  <!-- LINKS -->
+
   <!-- Base link -->
   <link name="base_link"/>
   
@@ -399,7 +401,7 @@
 
   <!-- JOINTS -->
 
-    <!-- Base joint-->
+  <!-- Base joint-->
   <joint name="bottom_joint" type="fixed">
     <origin rpy="0 0 0" xyz="0 0 0.0951"/>
     <parent link="base_link"/>
@@ -506,5 +508,104 @@
     <limit effort="10.0" velocity="2.0"/>
     <dynamics friction="0.01"/>
   </joint>
+
+  <!-- PLUGINS -->
+
+  <!-- Joint state publisher -->
+  <gazebo>
+    <plugin name="barista_robot_joint_state" filename="libgazebo_ros_joint_state_publisher.so">
+      <ros>
+          <remapping>~/out:=joint_states</remapping>
+      </ros>
+      <update_rate>30</update_rate>
+      <joint_name>left_wheel_joint</joint_name>
+      <joint_name>right_wheel_joint</joint_name>
+      <joint_name>caster_wheel_yaw_joint</joint_name>
+      <joint_name>caster_wheel_roll_joint</joint_name>
+      <joint_name>caster_wheel_pitch_joint</joint_name>
+      <joint_name>lidar_spinner_joint</joint_name>
+    </plugin>
+  </gazebo>
+
+  <!-- Differential drive -->
+  <gazebo>
+    <plugin filename="libgazebo_ros_diff_drive.so" name="differential_drive_controller">
+
+      <!-- wheels -->
+      <left_joint>left_wheel_joint</left_joint>
+      <right_joint>right_wheel_joint</right_joint>
+
+      <!-- kinematics -->
+      <wheel_separation>0.316</wheel_separation>
+      <wheel_diameter>0.0704</wheel_diameter>
+
+      <!-- limits -->
+      <max_wheel_torque>1.0</max_wheel_torque>
+      <max_wheel_acceleration>2.0</max_wheel_acceleration>
+
+      <!-- output -->
+      <publish_odom>true</publish_odom>
+      <publish_odom_tf>true</publish_odom_tf>
+
+      <odometry_frame>odom</odometry_frame>
+      <robot_base_frame>base_link</robot_base_frame>
+
+    </plugin>
+  </gazebo>
+
+  <!-- SENSORS -->
+  <gazebo reference="lidar_spinner_link">
+    <sensor name="sensor_ray" type="ray">
+        <pose>0 0 0 0 0 0</pose>
+        <ray>
+          <scan>
+            <horizontal>
+              <samples>200</samples>
+              <resolution>1.0</resolution>
+              <min_angle>-3.14</min_angle>
+              <max_angle>3.14</max_angle>
+            </horizontal>
+          </scan>
+          <range>
+            <min>0.1</min>
+            <max>5.0</max>
+          </range>
+        </ray>
+        <always_on>true</always_on>
+        <visualize>true</visualize>
+        <update_rate>100.0</update_rate>
+        <plugin name="laser" filename="libgazebo_ros_ray_sensor.so">
+          <ros>
+            <namespace>/barista_robot</namespace>
+            <remapping>~/out:=scan</remapping>
+          </ros>
+          <output_type>sensor_msgs/LaserScan</output_type>
+        </plugin>
+      </sensor>
+	</gazebo>
+
+    <!-- ROS2 CONTROL -->
+  <ros2_control name="GazeboSystem" type="system">
+    <hardware>
+      <plugin>gazebo_ros2_control/GazeboSystem</plugin>
+    </hardware>
+
+    <joint name="lidar_spinner_joint">
+      <command_interface name="velocity">
+        <param name="min">0.0</param>
+        <param name="max">2.0</param>
+      </command_interface>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+      <state_interface name="effort"/>
+    </joint>
+  </ros2_control>
+
+  <gazebo>
+    <plugin filename="libgazebo_ros2_control.so" name="gazebo_ros2_control">
+      <parameters>$(find barista_robot_description)/config/lidar_spin_controller.yaml</parameters>
+      <robot_param_node>/robot_state_publisher_node</robot_param_node>
+    </plugin>
+  </gazebo>
 
 </robot>
