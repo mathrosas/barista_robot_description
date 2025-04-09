@@ -410,6 +410,7 @@
     <visual>
       <geometry>
         <mesh filename="package://barista_robot_description/meshes/hokuyo_urg_04lx.dae" scale="1 1 1"/>
+        <!-- <cylinder radius="0.0327" length="0.0188"/> -->
       </geometry>
       <material name="black"/>
     </visual>
