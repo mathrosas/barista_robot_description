@@ -405,45 +405,19 @@
     <material>Gazebo/Yellow</material>
   </gazebo>
 
-  <!-- Lidar support link -->
-  <link name="lidar_support_link">
-    <visual>
-      <geometry>
-        <box size="0.0947 0.0727 0.0257"/>
-      </geometry>
-      <material name="dark"/>
-    </visual>
-
-    <collision>
-      <geometry>
-        <box size="0.0947 0.0727 0.0257"/>
-      </geometry>
-    </collision>
-
-    <inertial>
-      <mass value="0.100"/>
-      <inertia ixx="5.0e-05" ixy="0.0e+00" ixz="0.0e+00" iyy="8.0e-05" iyz="0.0e+00" izz="1.2e-04"/>
-    </inertial>
-  </link>
-
-  <gazebo reference="lidar_support_link">
-    <material>Gazebo/DarkGrey</material>
-  </gazebo>
-
   <!-- Lidar spinner link -->
-  <link name="lidar_spinner_link">
+  <link name="lidar_link">
     <visual>
       <geometry>
-        <!-- <mesh filename="package://barista_robot_description/meshes/hokuyo_urg_04lx.dae" scale="0.001 0.001 0.001"/> -->
-        <cylinder radius="0.0327" length="0.0188"/>
+        <mesh filename="package://barista_robot_description/meshes/hokuyo_urg_04lx.dae" scale="1 1 1"/>
       </geometry>
       <material name="black"/>
     </visual>
 
     <collision>
       <geometry>
-        <!-- <mesh filename="package://barista_robot_description/meshes/hokuyo_urg_04lx.dae" scale="0.001 0.001 0.001"/> -->
-        <cylinder radius="0.0327" length="0.0188"/>
+        <mesh filename="package://barista_robot_description/meshes/hokuyo_urg_04lx.dae" scale="1 1 1"/>
+        <!-- <cylinder radius="0.0327" length="0.0188"/> -->
       </geometry>
     </collision>
 
@@ -453,7 +427,7 @@
     </inertial>
   </link>
 
-  <gazebo reference="lidar_spinner_link">
+  <gazebo reference="lidar_link">
     <material>Gazebo/Black</material>
   </gazebo>
 
@@ -572,19 +546,10 @@
   </joint>
 
   <!-- Lidar -->
-  <joint name="lidar_support_joint" type="fixed">
-    <origin rpy="0 0 3.142" xyz="0.100 0 0.09035"/>
+  <joint name="lidar_joint" type="fixed">
+    <origin rpy="0 0 0" xyz="0.100 0 0.0775"/>
     <parent link="body_link"/>
-    <child link="lidar_support_link"/>
-  </joint>
-
-  <joint name="lidar_spinner_joint" type="continuous">
-    <origin rpy="0 0 0" xyz="0 0 0.02225"/>
-    <parent link="lidar_support_link"/>
-    <child link="lidar_spinner_link"/>
-    <axis xyz="0 0 1"/>
-    <limit effort="10.0" velocity="2.0"/>
-    <dynamics friction="0.01"/>
+    <child link="lidar_link"/>
   </joint>
 
   <!-- PLUGINS -->
@@ -598,13 +563,12 @@
       <update_rate>30.0</update_rate>
       <joint_name>left_wheel_joint</joint_name>
       <joint_name>right_wheel_joint</joint_name>
-      <!-- <joint_name>front_caster_wheel_yaw_joint</joint_name>
+      <joint_name>front_caster_wheel_yaw_joint</joint_name>
       <joint_name>front_caster_wheel_roll_joint</joint_name>
       <joint_name>front_caster_wheel_pitch_joint</joint_name>
       <joint_name>back_caster_wheel_yaw_joint</joint_name>
       <joint_name>back_caster_wheel_roll_joint</joint_name>
       <joint_name>back_caster_wheel_pitch_joint</joint_name>
-      <joint_name>lidar_spinner_joint</joint_name> -->
     </plugin>
   </gazebo>
 
@@ -633,5 +597,36 @@
 
     </plugin>
   </gazebo>
+
+  <!-- SENSORS -->
+  <gazebo reference="lidar_link">
+    <sensor name="sensor_ray" type="ray">
+        <pose>0 0 0 0 0 0</pose>
+        <ray>
+          <scan>
+            <horizontal>
+              <samples>200</samples>
+              <resolution>1.0</resolution>
+              <min_angle>-3.14</min_angle>
+              <max_angle>3.14</max_angle>
+            </horizontal>
+          </scan>
+          <range>
+            <min>0.1</min>
+            <max>5.0</max>
+          </range>
+        </ray>
+        <always_on>true</always_on>
+        <visualize>true</visualize>
+        <update_rate>100.0</update_rate>
+        <plugin name="laser" filename="libgazebo_ros_ray_sensor.so">
+          <ros>
+            <namespace>/barista_robot</namespace>
+            <remapping>~/out:=scan</remapping>
+          </ros>
+          <output_type>sensor_msgs/LaserScan</output_type>
+        </plugin>
+      </sensor>
+	</gazebo>
 
 </robot>

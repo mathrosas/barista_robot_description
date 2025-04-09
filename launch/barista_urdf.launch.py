@@ -1,7 +1,7 @@
 import os
 from ament_index_python.packages import get_package_share_directory
 from launch import LaunchDescription
-from launch.actions import ExecuteProcess, IncludeLaunchDescription
+from launch.actions import ExecuteProcess, IncludeLaunchDescription, DeclareLaunchArgument
 from launch.launch_description_sources import PythonLaunchDescriptionSource
 from launch_ros.actions import Node
 from launch.substitutions import Command
@@ -9,32 +9,37 @@ from ament_index_python.packages import get_package_prefix
 
 def generate_launch_description():
 
+    pkg_gazebo_ros = get_package_share_directory('gazebo_ros')
+    pkg_barista_robot_gazebo = get_package_share_directory('barista_robot_description')
+
+    # We get the whole install dir
+    # We do this to avoid having to copy or softlink manually the packages so that gazebo can find them
     description_package_name = "barista_robot_description"
     install_dir = get_package_prefix(description_package_name)
 
-    gazebo_models_path = os.path.join(description_package_name, 'models')
+    gazebo_models_path = os.path.join(pkg_barista_robot_gazebo, 'models')
+    # os.environ["GAZEBO_MODEL_PATH"] = gazebo_models_path
+
     if 'GAZEBO_MODEL_PATH' in os.environ:
-        os.environ['GAZEBO_MODEL_PATH'] = os.environ['GAZEBO_MODEL_PATH'] + \
-            ':' + install_dir + '/share' + ':' + gazebo_models_path
+        os.environ['GAZEBO_MODEL_PATH'] =  os.environ['GAZEBO_MODEL_PATH'] + ':' + install_dir + '/share' + ':' + gazebo_models_path
     else:
-        os.environ['GAZEBO_MODEL_PATH'] = install_dir + \
-            "/share" + ':' + gazebo_models_path
+        os.environ['GAZEBO_MODEL_PATH'] =  install_dir + "/share" + ':' + gazebo_models_path
 
     if 'GAZEBO_PLUGIN_PATH' in os.environ:
-        os.environ['GAZEBO_PLUGIN_PATH'] = os.environ['GAZEBO_PLUGIN_PATH'] + \
-            ':' + install_dir + '/lib'
+        os.environ['GAZEBO_PLUGIN_PATH'] = os.environ['GAZEBO_PLUGIN_PATH'] + ':' + install_dir + '/lib'
     else:
         os.environ['GAZEBO_PLUGIN_PATH'] = install_dir + '/lib'
 
     print("GAZEBO MODELS PATH=="+str(os.environ["GAZEBO_MODEL_PATH"]))
     print("GAZEBO PLUGINS PATH=="+str(os.environ["GAZEBO_PLUGIN_PATH"]))
 
+    # Gazebo launch
     gazebo = IncludeLaunchDescription(
-        PythonLaunchDescriptionSource([os.path.join(
-            get_package_share_directory('gazebo_ros'), 'launch'), '/gazebo.launch.py']),
-        launch_arguments={"verbose": "false", 'pause': 'true'}.items(),
-    )
-
+        PythonLaunchDescriptionSource(
+            os.path.join(pkg_gazebo_ros, 'launch', 'gazebo.launch.py'),
+        )
+    )   
+    
     urdf_file = 'barista_robot_model.urdf'
     package_description = "barista_robot_description"
 
@@ -92,29 +97,15 @@ def generate_launch_description():
                    '-topic', '/robot_description'
                    ]
     )
-
-    spawn_controller_joint_state = Node(
-        package="controller_manager",
-        executable="spawner",
-        arguments=["joint_state_broadcaster"],
-        output="screen",
-    )
-
-    spawn_controller_velocity = Node(
-        package="controller_manager",
-        executable="spawner",
-        arguments=["velocity_controller"],
-        output="screen",
-    )
     
     # create and return launch description object
-    return LaunchDescription(
-        [            
-            gazebo,
-            robot_state_publisher_node,
-            spawn_robot,
-            spawn_controller_joint_state,
-            spawn_controller_velocity,
-            rviz_node
-        ]
-    )
+    return LaunchDescription([
+        DeclareLaunchArgument(
+            'world',
+            default_value=[os.path.join(pkg_barista_robot_gazebo, 'worlds', 'barista_house.world'), ''],
+            description='SDF world file'),
+        gazebo,
+        robot_state_publisher_node,
+        spawn_robot,
+        rviz_node
+    ])
