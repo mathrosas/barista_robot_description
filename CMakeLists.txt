@@ -41,8 +41,8 @@ install(
     rviz
     launch
     meshes
-	config
 	worlds
+	xacro
   DESTINATION
     share/${PROJECT_NAME}/
 )

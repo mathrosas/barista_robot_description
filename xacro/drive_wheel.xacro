@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+    
+<xacro:property name="drive_wheel_radius" value="0.0352"/>
+<xacro:property name="drive_wheel_length" value="0.0206"/>
+
+<xacro:macro name="drive_wheel" params="drive_wheel_name">
+  
+  <link name="${drive_wheel_name}_link">
+    <visual>
+      <geometry>
+        <cylinder radius="${drive_wheel_radius}" length="${drive_wheel_length}"/>
+      </geometry>
+      <material name="black"/>
+    </visual>
+
+    <collision>
+      <geometry>
+        <cylinder radius="${drive_wheel_radius}" length="${drive_wheel_length}"/>
+      </geometry>
+    </collision>
+
+    <inertial>
+      <mass value="0.025"/>
+      <inertia ixx="8.6e-06" ixy="0.0e+00" ixz="0.0e+00" iyy="8.6e-06" iyz="0.0e+00" izz="1.5e-05"/>
+    </inertial>
+  </link>
+</xacro:macro>
+
+</robot>
