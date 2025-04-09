@@ -13,8 +13,13 @@
   <depend>xacro</depend>
   <depend>rclcpp</depend>
 
+  <depend>gazebo_ros</depend>
+  <!-- <depend>barista_robot_description</depend> -->
+
   <depend>ros2_control</depend>
   <depend>gazebo_ros2_control</depend>
+  <depend>joint_state_broadcaster</depend>
+  <depend>joint_trajectory_controller</depend>
   <depend>velocity_controllers</depend>
 
   <test_depend>ament_lint_auto</test_depend>

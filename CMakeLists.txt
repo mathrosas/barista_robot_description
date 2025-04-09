@@ -14,8 +14,13 @@ find_package(urdf REQUIRED)
 find_package(xacro REQUIRED)
 find_package(rclcpp REQUIRED)
 
+find_package(gazebo_ros REQUIRED)
+# find_package(barista_robot_description REQUIRED)
+
 find_package(ros2_control REQUIRED)
 find_package(gazebo_ros2_control REQUIRED)
+find_package(joint_state_broadcaster REQUIRED)
+find_package(joint_trajectory_controller REQUIRED)
 find_package(velocity_controllers REQUIRED)
 
 if(BUILD_TESTING)
