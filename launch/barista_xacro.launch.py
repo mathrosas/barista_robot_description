@@ -4,7 +4,7 @@ from launch import LaunchDescription
 from launch.actions import ExecuteProcess, IncludeLaunchDescription, DeclareLaunchArgument
 from launch.launch_description_sources import PythonLaunchDescriptionSource
 from launch_ros.actions import Node
-from launch.substitutions import Command
+from launch.substitutions import Command, LaunchConfiguration
 from ament_index_python.packages import get_package_prefix
 
 def generate_launch_description():
@@ -64,7 +64,7 @@ def generate_launch_description():
     print("Fetching Rviz configuration ==>")
 
     # RVIZ Configuration
-    rviz_config_dir = os.path.join(get_package_share_directory(package_description), 'rviz', 'barista_robot_xacro.rviz')
+    rviz_config_dir = os.path.join(get_package_share_directory(package_description), 'rviz', 'barista_robot.rviz')
 
     rviz_node = Node(
             package='rviz2',
