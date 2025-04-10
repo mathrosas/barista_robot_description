@@ -1,6 +1,9 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="barista_robot">
 
+<xacro:property name="include_laser" value="$(arg include_laser)"/>
+<xacro:arg name="include_laser" default="true"/>
+
 <xacro:include filename="$(find barista_robot_description)/xacro/caster_wheel.xacro" />
 <xacro:include filename="$(find barista_robot_description)/xacro/cup_holder_tray.xacro" />
 <xacro:include filename="$(find barista_robot_description)/xacro/drive_wheel.xacro" />
@@ -22,12 +25,13 @@
 <xacro:standoff_rod standoff_rod_name="standoff_rod_4"/>
 
 <xacro:cup_holder_tray/>
-
-<xacro:laser_scanner/>
+<xacro:if value="${include_laser}">
+  <xacro:laser_scanner/>
+  <xacro:laser_scanner_plugin/>
+</xacro:if>
 
 <xacro:state_publisher/>
 <xacro:differential_drive/>
-<xacro:laser_scanner_plugin/>
 
 <xacro:rviz_materials/>
 
@@ -170,10 +174,12 @@
   </joint>
 
   <!-- Lidar -->
-  <joint name="laser_scanner_joint" type="fixed">
-    <origin rpy="0 0 0" xyz="0.100 0 0.0775"/>
-    <parent link="body_link"/>
-    <child link="laser_scanner_link"/>
-  </joint>
+  <xacro:if value="${include_laser}">
+    <joint name="laser_scanner_joint" type="fixed">
+      <origin rpy="0 0 0" xyz="0.100 0 0.0775"/>
+      <parent link="body_link"/>
+      <child link="laser_scanner_link"/>
+    </joint>
+  </xacro:if>
 
 </robot>

@@ -405,8 +405,8 @@
     <material>Gazebo/Yellow</material>
   </gazebo>
 
-  <!-- Lidar spinner link -->
-  <link name="lidar_link">
+  <!-- Laser scanner link -->
+  <link name="laser_scanner_link">
     <visual>
       <geometry>
         <mesh filename="package://barista_robot_description/meshes/hokuyo_urg_04lx.dae" scale="1 1 1"/>
@@ -428,7 +428,7 @@
     </inertial>
   </link>
 
-  <gazebo reference="lidar_link">
+  <gazebo reference="laser_scanner_link">
     <material>Gazebo/Black</material>
   </gazebo>
 
@@ -546,11 +546,11 @@
     <child link="cup_holder_tray_link"/>
   </joint>
 
-  <!-- Lidar -->
-  <joint name="lidar_joint" type="fixed">
+  <!-- Laser scanner joint -->
+  <joint name="laser_scanner_joint" type="fixed">
     <origin rpy="0 0 0" xyz="0.100 0 0.0775"/>
     <parent link="body_link"/>
-    <child link="lidar_link"/>
+    <child link="laser_scanner_link"/>
   </joint>
 
   <!-- PLUGINS -->
@@ -600,7 +600,7 @@
   </gazebo>
 
   <!-- SENSORS -->
-  <gazebo reference="lidar_link">
+  <gazebo reference="laser_scanner_link">
     <sensor name="sensor_ray" type="ray">
         <pose>0 0 0 0 0 0</pose>
         <ray>
