@@ -94,7 +94,7 @@
 
   <!-- Wheels joint -->
   <joint name="left_drive_wheel_joint" type="continuous">
-    <origin rpy="0 1.571 1.571" xyz="0 0.158 -0.0599"/>
+    <origin rpy="0 1.571 1.571" xyz="0 0.140 -0.0599"/>
     <parent link="body_link"/>
     <child link="left_drive_wheel_link"/>
     <axis rpy="0 0 0" xyz="0 0 1"/>
@@ -103,7 +103,7 @@
   </joint>
   
   <joint name="right_drive_wheel_joint" type="continuous">
-    <origin rpy="0 1.571 1.571" xyz="0 -0.158 -0.0599"/>
+    <origin rpy="0 1.571 1.571" xyz="0 -0.140 -0.0599"/>
     <parent link="body_link"/>
     <child link="right_drive_wheel_link"/>
     <axis rpy="0 0 0" xyz="0 0 1"/>
@@ -113,7 +113,7 @@
 
   <!-- Caster wheels joint -->
   <joint name="front_caster_wheel_yaw_joint" type="continuous">
-    <origin rpy="0 0 0" xyz="0.158 0 -0.0775"/>
+    <origin rpy="0 0 0" xyz="0.140 0 -0.0775"/>
     <parent link="body_link"/>
     <child link="front_caster_wheel_yaw_link"/>
     <axis xyz="0 0 1"/>
@@ -140,7 +140,7 @@
   </joint>
 
   <joint name="back_caster_wheel_yaw_joint" type="continuous">
-    <origin rpy="0 0 0" xyz="-0.158 0 -0.0775"/>
+    <origin rpy="0 0 0" xyz="-0.140 0 -0.0775"/>
     <parent link="body_link"/>
     <child link="back_caster_wheel_yaw_link"/>
     <axis xyz="0 0 1"/>
