@@ -602,7 +602,7 @@
   <!-- SENSORS -->
   <gazebo reference="laser_scanner_link">
     <sensor name="sensor_ray" type="ray">
-        <pose>0 0 0 0 0 0</pose>
+        <pose>0 0 0.06 0 0 0</pose>
         <ray>
           <scan>
             <horizontal>
@@ -622,10 +622,10 @@
         <update_rate>100.0</update_rate>
         <plugin name="laser" filename="libgazebo_ros_ray_sensor.so">
           <ros>
-            <namespace>/barista_robot</namespace>
             <remapping>~/out:=scan</remapping>
           </ros>
           <output_type>sensor_msgs/LaserScan</output_type>
+          <frame_name>laser_scanner_link</frame_name>
         </plugin>
       </sensor>
 	</gazebo>
