@@ -11,7 +11,7 @@
     <material>Gazebo/Blue</material>
   </gazebo>
   
-  <xacro:if value="${robot_name == 'Morty'}">
+  <xacro:if value="${robot_name == 'morty'}">
     <gazebo reference="body_link">
       <material>Gazebo/Red</material>
     </gazebo>
@@ -21,7 +21,7 @@
     </gazebo>
   </xacro:if>
 
-  <xacro:if value="${robot_name == 'Rick'}">
+  <xacro:if value="${robot_name == 'rick'}">
     <gazebo reference="body_link">
       <material>Gazebo/Blue</material>
     </gazebo>

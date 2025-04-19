@@ -60,8 +60,8 @@ def generate_launch_description():
     robot_desc_path = os.path.join(get_package_share_directory(
         "barista_robot_description"), "xacro", robot_desc_file)
 
-    robot_name_1 = "Rick"
-    robot_name_2 = "Morty"
+    robot_name_1 = "rick"
+    robot_name_2 = "morty"
 
     rsp_robot1 = Node(
         package='robot_state_publisher',
@@ -86,14 +86,14 @@ def generate_launch_description():
     spawn_robot1 = Node(
         package='gazebo_ros',
         executable='spawn_entity.py',
-        arguments=['-entity', 'Rick', '-x', '0.0', '-y', '0.0', '-z', '0.0',
+        arguments=['-entity', 'rick', '-x', '0.0', '-y', '0.0', '-z', '0.0',
                    '-topic', robot_name_1+'/robot_description']
     )
 
     spawn_robot2 = Node(
         package='gazebo_ros',
         executable='spawn_entity.py',
-        arguments=['-entity', 'Morty', '-x', '1.0', '-y', '1.0', '-z', '0.0',
+        arguments=['-entity', 'morty', '-x', '1.0', '-y', '1.0', '-z', '0.0',
                    '-topic', robot_name_2+'/robot_description']
     )
 
