@@ -2,7 +2,7 @@
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
     
 <xacro:macro name="gazebo_elements">
-  
+
   <gazebo reference="body_link">
     <material>Gazebo/Blue</material>
   </gazebo>
@@ -10,6 +10,26 @@
   <gazebo reference="cup_holder_tray_link">
     <material>Gazebo/Blue</material>
   </gazebo>
+  
+  <xacro:if value="${robot_name == 'Morty'}">
+    <gazebo reference="body_link">
+      <material>Gazebo/Red</material>
+    </gazebo>
+
+    <gazebo reference="cup_holder_tray_link">
+      <material>Gazebo/Red</material>
+    </gazebo>
+  </xacro:if>
+
+  <xacro:if value="${robot_name == 'Rick'}">
+    <gazebo reference="body_link">
+      <material>Gazebo/Blue</material>
+    </gazebo>
+
+    <gazebo reference="cup_holder_tray_link">
+      <material>Gazebo/Blue</material>
+    </gazebo>
+  </xacro:if>
 
   <gazebo reference="standoff_rod_1_link">
     <material>Gazebo/White</material>

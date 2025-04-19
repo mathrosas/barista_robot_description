@@ -1,6 +1,7 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="barista_robot">
 
+<xacro:property name="robot_name" value="$(arg robot_name)"/>
 <xacro:property name="include_laser" value="$(arg include_laser)"/>
 <xacro:arg name="include_laser" default="true"/>
 
@@ -47,6 +48,12 @@
         <cylinder radius="0.178" length="0.155"/>
       </geometry>
       <material name="blue"/>
+      <xacro:if value="${robot_name == 'Rick'}">
+        <material name="blue"/>
+      </xacro:if>
+      <xacro:if value="${robot_name == 'Morty'}">
+        <material name="red"/>
+      </xacro:if>
     </visual>
 
     <collision>
