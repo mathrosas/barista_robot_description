@@ -48,10 +48,10 @@
         <cylinder radius="0.178" length="0.155"/>
       </geometry>
       <material name="blue"/>
-      <xacro:if value="${robot_name == 'Rick'}">
+      <xacro:if value="${robot_name == 'rick'}">
         <material name="blue"/>
       </xacro:if>
-      <xacro:if value="${robot_name == 'Morty'}">
+      <xacro:if value="${robot_name == 'morty'}">
         <material name="red"/>
       </xacro:if>
     </visual>

@@ -62,7 +62,7 @@ Visualization Manager:
         Durability Policy: Volatile
         History Policy: Keep Last
         Reliability Policy: Reliable
-        Value: /Rick/robot_description
+        Value: /rick/robot_description
       Enabled: true
       Links:
         All Links Enabled: true
@@ -157,7 +157,7 @@ Visualization Manager:
         Inertia: false
         Mass: false
       Name: RobotModel
-      TF Prefix: Rick
+      TF Prefix: rick
       Update Interval: 0
       Value: true
       Visual Enabled: true
@@ -171,7 +171,7 @@ Visualization Manager:
         Durability Policy: Volatile
         History Policy: Keep Last
         Reliability Policy: Reliable
-        Value: /Morty/robot_description
+        Value: /morty/robot_description
       Enabled: true
       Links:
         All Links Enabled: true
@@ -266,7 +266,7 @@ Visualization Manager:
         Inertia: false
         Mass: false
       Name: RobotModel
-      TF Prefix: Morty
+      TF Prefix: morty
       Update Interval: 0
       Value: true
       Visual Enabled: true
@@ -275,77 +275,77 @@ Visualization Manager:
       Frame Timeout: 15
       Frames:
         All Enabled: true
-        Morty/back_caster_wheel_pitch_link:
+        morty/back_caster_wheel_pitch_link:
           Value: true
-        Morty/back_caster_wheel_roll_link:
+        morty/back_caster_wheel_roll_link:
           Value: true
-        Morty/back_caster_wheel_yaw_link:
+        morty/back_caster_wheel_yaw_link:
           Value: true
-        Morty/base_link:
+        morty/base_link:
           Value: true
-        Morty/body_link:
+        morty/body_link:
           Value: true
-        Morty/cup_holder_tray_link:
+        morty/cup_holder_tray_link:
           Value: true
-        Morty/front_caster_wheel_pitch_link:
+        morty/front_caster_wheel_pitch_link:
           Value: true
-        Morty/front_caster_wheel_roll_link:
+        morty/front_caster_wheel_roll_link:
           Value: true
-        Morty/front_caster_wheel_yaw_link:
+        morty/front_caster_wheel_yaw_link:
           Value: true
-        Morty/laser_scanner_frame:
+        morty/laser_scanner_frame:
           Value: true
-        Morty/laser_scanner_link:
+        morty/laser_scanner_link:
           Value: true
-        Morty/left_wheel_link:
+        morty/left_wheel_link:
           Value: true
-        Morty/odom:
+        morty/odom:
           Value: true
-        Morty/right_wheel_link:
+        morty/right_wheel_link:
           Value: true
-        Morty/standoff_rod_1_link:
+        morty/standoff_rod_1_link:
           Value: true
-        Morty/standoff_rod_2_link:
+        morty/standoff_rod_2_link:
           Value: true
-        Morty/standoff_rod_3_link:
+        morty/standoff_rod_3_link:
           Value: true
-        Morty/standoff_rod_4_link:
+        morty/standoff_rod_4_link:
           Value: true
-        Rick/back_caster_wheel_pitch_link:
+        rick/back_caster_wheel_pitch_link:
           Value: true
-        Rick/back_caster_wheel_roll_link:
+        rick/back_caster_wheel_roll_link:
           Value: true
-        Rick/back_caster_wheel_yaw_link:
+        rick/back_caster_wheel_yaw_link:
           Value: true
-        Rick/base_link:
+        rick/base_link:
           Value: true
-        Rick/body_link:
+        rick/body_link:
           Value: true
-        Rick/cup_holder_tray_link:
+        rick/cup_holder_tray_link:
           Value: true
-        Rick/front_caster_wheel_pitch_link:
+        rick/front_caster_wheel_pitch_link:
           Value: true
-        Rick/front_caster_wheel_roll_link:
+        rick/front_caster_wheel_roll_link:
           Value: true
-        Rick/front_caster_wheel_yaw_link:
+        rick/front_caster_wheel_yaw_link:
           Value: true
-        Rick/laser_scanner_frame:
+        rick/laser_scanner_frame:
           Value: true
-        Rick/laser_scanner_link:
+        rick/laser_scanner_link:
           Value: true
-        Rick/left_wheel_link:
+        rick/left_wheel_link:
           Value: true
-        Rick/odom:
+        rick/odom:
           Value: true
-        Rick/right_wheel_link:
+        rick/right_wheel_link:
           Value: true
-        Rick/standoff_rod_1_link:
+        rick/standoff_rod_1_link:
           Value: true
-        Rick/standoff_rod_2_link:
+        rick/standoff_rod_2_link:
           Value: true
-        Rick/standoff_rod_3_link:
+        rick/standoff_rod_3_link:
           Value: true
-        Rick/standoff_rod_4_link:
+        rick/standoff_rod_4_link:
           Value: true
         world:
           Value: true
@@ -356,61 +356,61 @@ Visualization Manager:
       Show Names: true
       Tree:
         world:
-          Morty/odom:
-            Morty/base_link:
-              Morty/body_link:
-                Morty/back_caster_wheel_yaw_link:
-                  Morty/back_caster_wheel_roll_link:
-                    Morty/back_caster_wheel_pitch_link:
+          morty/odom:
+            morty/base_link:
+              morty/body_link:
+                morty/back_caster_wheel_yaw_link:
+                  morty/back_caster_wheel_roll_link:
+                    morty/back_caster_wheel_pitch_link:
                       {}
-                Morty/cup_holder_tray_link:
+                morty/cup_holder_tray_link:
                   {}
-                Morty/front_caster_wheel_yaw_link:
-                  Morty/front_caster_wheel_roll_link:
-                    Morty/front_caster_wheel_pitch_link:
+                morty/front_caster_wheel_yaw_link:
+                  morty/front_caster_wheel_roll_link:
+                    morty/front_caster_wheel_pitch_link:
                       {}
-                Morty/laser_scanner_link:
-                  Morty/laser_scanner_frame:
+                morty/laser_scanner_link:
+                  morty/laser_scanner_frame:
                     {}
-                Morty/left_wheel_link:
+                morty/left_wheel_link:
                   {}
-                Morty/right_wheel_link:
+                morty/right_wheel_link:
                   {}
-                Morty/standoff_rod_1_link:
+                morty/standoff_rod_1_link:
                   {}
-                Morty/standoff_rod_2_link:
+                morty/standoff_rod_2_link:
                   {}
-                Morty/standoff_rod_3_link:
+                morty/standoff_rod_3_link:
                   {}
-                Morty/standoff_rod_4_link:
+                morty/standoff_rod_4_link:
                   {}
-          Rick/odom:
-            Rick/base_link:
-              Rick/body_link:
-                Rick/back_caster_wheel_yaw_link:
-                  Rick/back_caster_wheel_roll_link:
-                    Rick/back_caster_wheel_pitch_link:
+          rick/odom:
+            rick/base_link:
+              rick/body_link:
+                rick/back_caster_wheel_yaw_link:
+                  rick/back_caster_wheel_roll_link:
+                    rick/back_caster_wheel_pitch_link:
                       {}
-                Rick/cup_holder_tray_link:
+                rick/cup_holder_tray_link:
                   {}
-                Rick/front_caster_wheel_yaw_link:
-                  Rick/front_caster_wheel_roll_link:
-                    Rick/front_caster_wheel_pitch_link:
+                rick/front_caster_wheel_yaw_link:
+                  rick/front_caster_wheel_roll_link:
+                    rick/front_caster_wheel_pitch_link:
                       {}
-                Rick/laser_scanner_link:
-                  Rick/laser_scanner_frame:
+                rick/laser_scanner_link:
+                  rick/laser_scanner_frame:
                     {}
-                Rick/left_wheel_link:
+                rick/left_wheel_link:
                   {}
-                Rick/right_wheel_link:
+                rick/right_wheel_link:
                   {}
-                Rick/standoff_rod_1_link:
+                rick/standoff_rod_1_link:
                   {}
-                Rick/standoff_rod_2_link:
+                rick/standoff_rod_2_link:
                   {}
-                Rick/standoff_rod_3_link:
+                rick/standoff_rod_3_link:
                   {}
-                Rick/standoff_rod_4_link:
+                rick/standoff_rod_4_link:
                   {}
       Update Interval: 0
       Value: true
@@ -444,7 +444,7 @@ Visualization Manager:
         Filter size: 10
         History Policy: Keep Last
         Reliability Policy: Reliable
-        Value: /Rick/scan
+        Value: /rick/scan
       Use Fixed Frame: true
       Use rainbow: true
       Value: true
@@ -478,7 +478,7 @@ Visualization Manager:
         Filter size: 10
         History Policy: Keep Last
         Reliability Policy: Reliable
-        Value: /Morty/scan
+        Value: /morty/scan
       Use Fixed Frame: true
       Use rainbow: true
       Value: true
