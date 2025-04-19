@@ -52,7 +52,7 @@
 
 <xacro:macro name="laser_scanner_plugin">
 
-  <gazebo reference="laser_scanner_link">
+  <gazebo reference="laser_scanner_frame">
     <sensor name="sensor_ray" type="ray">
         <pose>0 0 0 0 0 0</pose>
         <ray>
@@ -60,8 +60,8 @@
             <horizontal>
               <samples>200</samples>
               <resolution>1.0</resolution>
-              <min_angle>-3.14</min_angle>
-              <max_angle>3.14</max_angle>
+              <min_angle>-1.57</min_angle>
+              <max_angle>1.57</max_angle>
             </horizontal>
           </scan>
           <range>
@@ -71,13 +71,13 @@
         </ray>
         <always_on>true</always_on>
         <visualize>true</visualize>
-        <update_rate>100.0</update_rate>
+        <update_rate>50.0</update_rate>
         <plugin name="laser" filename="libgazebo_ros_ray_sensor.so">
           <ros>
-            <namespace>/</namespace>
             <remapping>~/out:=scan</remapping>
           </ros>
           <output_type>sensor_msgs/LaserScan</output_type>
+          <frame_name>laser_scanner_frame</frame_name>
         </plugin>
       </sensor>
 	</gazebo>

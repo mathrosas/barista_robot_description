@@ -6,13 +6,10 @@ Panels:
       Expanded:
         - /Global Options1
         - /Status1
-        - /Grid1
         - /RobotModel1
-        - /RobotModel1/Description Topic1
         - /TF1
         - /LaserScan1
-        - /Odometry1
-        - /Odometry1/Shape1
+        - /LaserScan1/Topic1
       Splitter Ratio: 0.5
     Tree Height: 558
   - Class: rviz_common/Selection
@@ -37,7 +34,7 @@ Visualization Manager:
   Class: ""
   Displays:
     - Alpha: 0.5
-      Cell Size: 0.10000000149011612
+      Cell Size: 1
       Class: rviz_default_plugins/Grid
       Color: 160; 160; 164
       Enabled: true
@@ -51,7 +48,7 @@ Visualization Manager:
         Y: 0
         Z: 0
       Plane: XY
-      Plane Cell Count: 50
+      Plane Cell Count: 10
       Reference Frame: <Fixed Frame>
       Value: true
     - Alpha: 1
@@ -61,7 +58,7 @@ Visualization Manager:
       Description Source: Topic
       Description Topic:
         Depth: 5
-        Durability Policy: Transient Local
+        Durability Policy: Volatile
         History Policy: Keep Last
         Reliability Policy: Reliable
         Value: /robot_description
@@ -116,6 +113,10 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
+        laser_scanner_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
         laser_scanner_link:
           Alpha: 1
           Show Axes: false
@@ -182,6 +183,8 @@ Visualization Manager:
           Value: true
         front_caster_wheel_yaw_link:
           Value: true
+        laser_scanner_frame:
+          Value: true
         laser_scanner_link:
           Value: true
         left_wheel_link:
@@ -198,7 +201,7 @@ Visualization Manager:
           Value: true
         standoff_rod_4_link:
           Value: true
-      Marker Scale: 0.30000001192092896
+      Marker Scale: 0.5
       Name: TF
       Show Arrows: true
       Show Axes: true
@@ -217,7 +220,8 @@ Visualization Manager:
                 front_caster_wheel_pitch_link:
                   {}
             laser_scanner_link:
-              {}
+              laser_scanner_frame:
+                {}
             left_wheel_link:
               {}
             right_wheel_link:
@@ -244,7 +248,7 @@ Visualization Manager:
       Channel Name: intensity
       Class: rviz_default_plugins/LaserScan
       Color: 255; 255; 255
-      Color Transformer: Intensity
+      Color Transformer: AxisColor
       Decay Time: 0
       Enabled: true
       Invert Rainbow: false
@@ -267,45 +271,6 @@ Visualization Manager:
         Value: /scan
       Use Fixed Frame: true
       Use rainbow: true
-      Value: true
-    - Angle Tolerance: 0.10000000149011612
-      Class: rviz_default_plugins/Odometry
-      Covariance:
-        Orientation:
-          Alpha: 0.5
-          Color: 255; 255; 127
-          Color Style: Unique
-          Frame: Local
-          Offset: 1
-          Scale: 1
-          Value: true
-        Position:
-          Alpha: 0.30000001192092896
-          Color: 204; 51; 204
-          Scale: 1
-          Value: true
-        Value: false
-      Enabled: true
-      Keep: 250
-      Name: Odometry
-      Position Tolerance: 0.10000000149011612
-      Shape:
-        Alpha: 1
-        Axes Length: 1
-        Axes Radius: 0.10000000149011612
-        Color: 255; 255; 0
-        Head Length: 0.10000000149011612
-        Head Radius: 0.05000000074505806
-        Shaft Length: 0.25
-        Shaft Radius: 0.02500000037252903
-        Value: Arrow
-      Topic:
-        Depth: 5
-        Durability Policy: Volatile
-        Filter size: 10
-        History Policy: Keep Last
-        Reliability Policy: Best Effort
-        Value: /odom
       Value: true
   Enabled: true
   Global Options:
@@ -353,25 +318,25 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz_default_plugins/Orbit
-      Distance: 6.090420246124268
+      Distance: 2.590181589126587
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
       Focal Point:
-        X: 0.16317515075206757
-        Y: -0.003643681760877371
-        Z: -0.12615765631198883
+        X: 0
+        Y: 0
+        Z: 0
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.6103984117507935
+      Pitch: 0.23039819300174713
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 3.948577642440796
+      Yaw: 6.2285847663879395
     Saved: ~
 Window Geometry:
   Displays:

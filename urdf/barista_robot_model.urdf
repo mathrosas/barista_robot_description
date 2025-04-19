@@ -417,8 +417,8 @@
 
     <collision>
       <geometry>
-        <mesh filename="package://barista_robot_description/meshes/hokuyo_urg_04lx.dae" scale="1 1 1"/>
-        <!-- <cylinder radius="0.0327" length="0.0188"/> -->
+        <!-- <mesh filename="package://barista_robot_description/meshes/hokuyo_urg_04lx.dae" scale="1 1 1"/> -->
+        <cylinder radius="0.0327" length="0.0188"/>
       </geometry>
     </collision>
 
@@ -431,6 +431,9 @@
   <gazebo reference="laser_scanner_link">
     <material>Gazebo/Black</material>
   </gazebo>
+
+  <link name="laser_scanner_frame">
+  </link>
 
   <!-- JOINTS -->
 
@@ -553,6 +556,12 @@
     <child link="laser_scanner_link"/>
   </joint>
 
+  <joint name="laser_scanner_frame_joint" type="fixed">
+    <origin rpy="0 0 0" xyz="0 0 0.06"/>
+    <parent link="laser_scanner_link"/>
+    <child link="laser_scanner_frame"/>
+  </joint>
+
   <!-- PLUGINS -->
 
   <!-- Joint state publisher -->
@@ -600,16 +609,16 @@
   </gazebo>
 
   <!-- SENSORS -->
-  <gazebo reference="laser_scanner_link">
+  <gazebo reference="laser_scanner_frame">
     <sensor name="sensor_ray" type="ray">
-        <pose>0 0 0.06 0 0 0</pose>
+        <pose>0 0 0 0 0 0</pose>
         <ray>
           <scan>
             <horizontal>
               <samples>200</samples>
               <resolution>1.0</resolution>
-              <min_angle>-3.14</min_angle>
-              <max_angle>3.14</max_angle>
+              <min_angle>-1.57</min_angle>
+              <max_angle>1.57</max_angle>
             </horizontal>
           </scan>
           <range>
@@ -619,13 +628,13 @@
         </ray>
         <always_on>true</always_on>
         <visualize>true</visualize>
-        <update_rate>100.0</update_rate>
+        <update_rate>50.0</update_rate>
         <plugin name="laser" filename="libgazebo_ros_ray_sensor.so">
           <ros>
             <remapping>~/out:=scan</remapping>
           </ros>
           <output_type>sensor_msgs/LaserScan</output_type>
-          <frame_name>laser_scanner_link</frame_name>
+          <frame_name>laser_scanner_frame</frame_name>
         </plugin>
       </sensor>
 	</gazebo>

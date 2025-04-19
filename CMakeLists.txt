@@ -7,16 +7,11 @@ endif()
 
 # find dependencies
 find_package(ament_cmake REQUIRED)
-# uncomment the following section in order to fill in
-# further dependencies manually.
-# find_package(<dependency> REQUIRED)
 find_package(urdf REQUIRED)
 find_package(xacro REQUIRED)
 find_package(rclcpp REQUIRED)
 
 find_package(gazebo_ros REQUIRED)
-# find_package(barista_robot_description REQUIRED)
-
 find_package(ros2_control REQUIRED)
 find_package(gazebo_ros2_control REQUIRED)
 find_package(joint_state_broadcaster REQUIRED)

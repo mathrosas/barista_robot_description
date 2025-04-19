@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
 
-<!-- <xacro:property name="laser_scanner_radius" value="0.0327"/>
-<xacro:property name="laser_scanner_length" value="0.0188"/> -->
+<xacro:property name="laser_scanner_radius" value="0.0327"/>
+<xacro:property name="laser_scanner_length" value="0.0188"/>
 
 <xacro:macro name="laser_scanner">
 
@@ -17,8 +17,8 @@
 
     <collision>
       <geometry>
-        <mesh filename="package://barista_robot_description/meshes/hokuyo_urg_04lx.dae" scale="1 1 1"/>
-        <!-- <cylinder radius="${laser_scanner_radius}" length="${laser_scanner_length}"/> -->
+        <!-- <mesh filename="package://barista_robot_description/meshes/hokuyo_urg_04lx.dae" scale="1 1 1"/> -->
+        <cylinder radius="${laser_scanner_radius}" length="${laser_scanner_length}"/>
       </geometry>
     </collision>
 
@@ -26,6 +26,9 @@
       <mass value="0.050"/>
       <inertia ixx="1.5e-05" ixy="0.0e+00" ixz="0.0e+00" iyy="1.5e-05" iyz="0.0e+00" izz="2.7e-05"/>
     </inertial>
+  </link>
+
+  <link name="laser_scanner_frame">
   </link>
   
 </xacro:macro>
