@@ -13,8 +13,8 @@
 <xacro:include filename="$(find barista_robot_description)/xacro/standoff_rod.xacro" />
 <xacro:include filename="$(find barista_robot_description)/xacro/barista_robot_model.gazebo.xacro" />
 
-<xacro:drive_wheel drive_wheel_name="left_drive_wheel"/>
-<xacro:drive_wheel drive_wheel_name="right_drive_wheel"/>
+<xacro:drive_wheel drive_wheel_name="left_wheel"/>
+<xacro:drive_wheel drive_wheel_name="right_wheel"/>
 
 <xacro:caster_wheel caster_wheel_name="front_caster_wheel"/>
 <xacro:caster_wheel caster_wheel_name="back_caster_wheel"/>
@@ -93,19 +93,19 @@
   </joint>
 
   <!-- Wheels joint -->
-  <joint name="left_drive_wheel_joint" type="continuous">
+  <joint name="left_wheel_joint" type="continuous">
     <origin rpy="0 1.571 1.571" xyz="0 0.140 -0.0599"/>
     <parent link="body_link"/>
-    <child link="left_drive_wheel_link"/>
+    <child link="left_wheel_link"/>
     <axis rpy="0 0 0" xyz="0 0 1"/>
     <limit effort="10000" velocity="1000"/>
     <joint_properties damping="1.0" friction="1.0"/>
   </joint>
   
-  <joint name="right_drive_wheel_joint" type="continuous">
+  <joint name="right_wheel_joint" type="continuous">
     <origin rpy="0 1.571 1.571" xyz="0 -0.140 -0.0599"/>
     <parent link="body_link"/>
-    <child link="right_drive_wheel_link"/>
+    <child link="right_wheel_link"/>
     <axis rpy="0 0 0" xyz="0 0 1"/>
     <limit effort="10000" velocity="1000"/>
     <joint_properties damping="1.0" friction="1.0"/>
