@@ -2,14 +2,16 @@
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
     
 <xacro:macro name="gazebo_elements">
+  
+  <xacro:if value="${robot_name == 'rick' or robot_name == 'barista_robot'}">
+    <gazebo reference="body_link">
+      <material>Gazebo/Blue</material>
+    </gazebo>
 
-  <gazebo reference="body_link">
-    <material>Gazebo/Blue</material>
-  </gazebo>
-
-  <gazebo reference="cup_holder_tray_link">
-    <material>Gazebo/Blue</material>
-  </gazebo>
+    <gazebo reference="cup_holder_tray_link">
+      <material>Gazebo/Blue</material>
+    </gazebo>
+  </xacro:if>
   
   <xacro:if value="${robot_name == 'morty'}">
     <gazebo reference="body_link">
@@ -18,16 +20,6 @@
 
     <gazebo reference="cup_holder_tray_link">
       <material>Gazebo/Red</material>
-    </gazebo>
-  </xacro:if>
-
-  <xacro:if value="${robot_name == 'rick'}">
-    <gazebo reference="body_link">
-      <material>Gazebo/Blue</material>
-    </gazebo>
-
-    <gazebo reference="cup_holder_tray_link">
-      <material>Gazebo/Blue</material>
     </gazebo>
   </xacro:if>
 

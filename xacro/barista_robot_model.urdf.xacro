@@ -47,8 +47,7 @@
       <geometry>
         <cylinder radius="0.178" length="0.155"/>
       </geometry>
-      <material name="blue"/>
-      <xacro:if value="${robot_name == 'rick'}">
+      <xacro:if value="${robot_name == 'rick' or robot_name == 'barista_robot'}">
         <material name="blue"/>
       </xacro:if>
       <xacro:if value="${robot_name == 'morty'}">
