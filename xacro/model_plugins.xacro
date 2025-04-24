@@ -8,7 +8,7 @@
         <xacro:if value="${robot_name == 'rick' or robot_name == 'morty'}">
           <namespace>/${robot_name}</namespace>
         </xacro:if>
-          <remapping>~/out:=joint_states</remapping>
+        <remapping>~/out:=joint_states</remapping>
       </ros>
       <update_rate>30.0</update_rate>
       <joint_name>left_wheel_joint</joint_name>
@@ -52,16 +52,13 @@
       <publish_odom_tf>true</publish_odom_tf>
 
       <xacro:if value="${robot_name == 'rick' or robot_name == 'morty'}">
-        <odometry_frame>${robot_name}/odom</odometry_frame>
-        <robot_base_frame>${robot_name}/base_link</robot_base_frame>
+          <odometry_frame>${robot_name}/odom</odometry_frame>
+          <robot_base_frame>${robot_name}/base_link</robot_base_frame>
       </xacro:if>
-
       <xacro:if value="${robot_name == 'barista_robot'}">
         <odometry_frame>odom</odometry_frame>
         <robot_base_frame>base_link</robot_base_frame>
       </xacro:if>
-
-      
 
     </plugin>
   </gazebo>

@@ -98,17 +98,15 @@ def generate_launch_description():
     )
 
     static_tf_rick = Node(
-    package='tf2_ros',
-    executable='static_transform_publisher',
-    name='static_tf_rick',
-    arguments=['0', '0', '0', '0', '0', '0', 'world', f'{robot_name_1}/odom'],
+             package='tf2_ros',
+             executable='static_transform_publisher',
+             arguments = ['--frame-id', 'world', '--child-frame-id', robot_name_1 + '/odom']
     )
     
     static_tf_morty = Node(
-    package='tf2_ros',
-    executable='static_transform_publisher',
-    name='static_tf_morty',
-    arguments=['1', '1', '0', '0', '0', '0', 'world', f'{robot_name_2}/odom'],
+             package='tf2_ros',
+             executable='static_transform_publisher',
+             arguments = ['--frame-id', 'world', '--child-frame-id', robot_name_2 + '/odom']
     )
 
     rviz_config_dir = os.path.join(get_package_share_directory(description_package_name), 'rviz', 'barista_two_robots.rviz')
